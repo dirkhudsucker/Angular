@@ -1,0 +1,24 @@
+<div class="carousel">
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <img [src]="images[0]" alt="Random first slide">
+    
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[1]" alt="Random second slide">
+  </ng-template>
+  <ng-template ngbSlide>
+    <img [src]="images[2]" alt="Random third slide">
+    
+  </ng-template>
+</ngb-carousel>
+ <div class="enter">
+  <input id="name" name="name" type="text" class="form-control" (focus)="onFocus()"
+      required minlength="7"  placeholder="Please Enter Your Phone Number to Convert"
+      [(ngModel)]="model" #name="ngModel" />
+  
+      
+ <button type="button" class="btn light btn-sm"  (click)="valid()">Submit</button>
+ <div class="alert alert-danger" *ngIf="showMsg==true">{{model}} This is not a valid phone number</div>
+</div>
+</div>

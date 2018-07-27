@@ -1,0 +1,23 @@
+<div class="content">
+<h1>Posts</h1>
+<nav><div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Records Per Page</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item" (click)="pageSizing(5)">5</button>
+        <button class="dropdown-item" (click)="pageSizing(10)">10</button>
+        <button class="dropdown-item" (click)="pageSizing(20)">20</button>
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+<ngb-pagination [collectionSize]="pageTotal.length*10" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+
+<ul class="lists">
+  <li *ngFor="let post of Allposts|slice: (currentPage-1)*pageSize:currentPage*this.pageSize">
+    <p >{{ post.body }}</p>
+  </li>
+</ul>
+</div>

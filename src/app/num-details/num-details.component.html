@@ -1,0 +1,30 @@
+<div class="content">
+  <h1>Phone Number Convert</h1>
+  <hr>
+  <div>
+  <p id="number">Your Phone Number is:
+    <em>{{num}}</em>. Total Number of possible combinations: {{totalNum}}
+    <br> Below is Your current data view:</p>
+     <small>Showing {{(page-1)*PageSize+1}}-{{(page*PageSize+1)<totalNum?(page*PageSize+1):totalNum}} of {{totalNum}}</small> 
+     <div ngbDropdown class="d-inline-block">
+       <p id="perpage">Records Per Page: &nbsp; </p>
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{PageSize}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item" (click)="pageSizing(50)">50</button>
+        <button class="dropdown-item"(click)="pageSizing(100)">100</button>
+        <button class="dropdown-item" (click)="pageSizing(200)">200</button>
+      </div>
+</div>
+</div>
+     <br><br> 
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 test" *ngFor="let list of lists.subList;let i=index">
+          {{i+(page-1)*PageSize+1}} &nbsp; &nbsp; &nbsp; {{list}}
+        </div>
+      </div>
+      <br><br>
+
+     
+      <ngb-pagination id="paginator" [collectionSize]="totalNum/PageSize*10" (pageChange)="setPage($event)"  [(page)]="page" [maxSize]="PageTotalInPagination" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+         
+</div>
